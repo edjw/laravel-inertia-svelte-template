@@ -11,6 +11,8 @@
         href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
         rel="stylesheet">
 
+    <title>Change me</title>
+
     <style>
         html {
             font-family: 'Noto-Sans', sans-serif;
