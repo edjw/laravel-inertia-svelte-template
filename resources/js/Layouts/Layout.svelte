@@ -14,7 +14,7 @@
     </div>
 </div>
 
-<style>
+<style lang="postcss">
     .gray {
         min-height: calc(100dvh - 65px);
         @apply bg-slate-100;

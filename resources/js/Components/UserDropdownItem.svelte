@@ -17,7 +17,7 @@
     </a>
 </DropdownMenu.Item>
 
-<style>
+<style lang="postcss">
     .active {
         @apply bg-primary/5;
     }

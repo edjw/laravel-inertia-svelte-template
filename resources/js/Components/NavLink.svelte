@@ -15,7 +15,7 @@
     <slot />
 </a>
 
-<style>
+<style lang="postcss">
     .active {
         @apply border-primary border-b-2 text-gray-900;
     }
