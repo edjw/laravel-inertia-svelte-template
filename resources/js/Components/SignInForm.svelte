@@ -14,7 +14,8 @@
         remember: false,
     });
 
-    function submit() {
+    function submit(event: SubmitEvent) {
+        event.preventDefault();
         $form.post("login");
     }
 </script>
@@ -26,7 +27,7 @@
         {/if}
     </Card.Header>
     <Card.Content>
-        <form on:submit|preventDefault={submit} class="">
+        <form onsubmit={submit} class="">
             <FormSection>
                 <Label for="email">Email</Label>
                 <Input

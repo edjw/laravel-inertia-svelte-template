@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import { useForm, page } from "@inertiajs/svelte";
     import Button from "@/Components/Button.svelte";
     import ErrorLabel from "@/Components/ErrorLabel.svelte";
@@ -11,7 +11,8 @@
         email: null,
     });
 
-    function submit() {
+    function submit(event: SubmitEvent) {
+        event.preventDefault();
         $form.post("forgot-password");
     }
 </script>
@@ -28,7 +29,7 @@
             </Card.Description>
         </Card.Header>
         <Card.Content>
-            <form on:submit|preventDefault={submit}>
+            <form onsubmit={submit}>
                 <FormSection>
                     <Label for="email">Email</Label>
                     <Input

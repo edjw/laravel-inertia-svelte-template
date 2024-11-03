@@ -11,9 +11,10 @@
         password: null,
     });
 
-    let deleteDialogOpen = false;
+    let deleteDialogOpen = $state(false);
 
-    function deleteAccount() {
+    function deleteAccount(event: SubmitEvent) {
+        event.preventDefault();
         console.log("deleting");
         $form.delete("/profile");
     }
@@ -47,7 +48,7 @@
                         >Enter your current password to continue.</Dialog.Description
                     >
                 </Dialog.Header>
-                <form on:submit|preventDefault={deleteAccount}>
+                <form onsubmit={deleteAccount}>
                     <FormSection>
                         <Label for="password">Password</Label>
                         <Input

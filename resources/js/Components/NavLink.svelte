@@ -1,9 +1,9 @@
 <script>
     import { page, inertia } from "@inertiajs/svelte";
 
-    export let href;
+    let { href, children } = $props();
 
-    $: active = $page.url === href;
+    let active = $derived($page.url === href);
 </script>
 
 <a
@@ -12,7 +12,7 @@
     class:active
     class="inline-flex items-center px-2 py-3 text-sm font-medium leading-4 transition border-b-2 border-transparent text-muted-foreground hover:border-gray-200"
 >
-    <slot />
+    {@render children?.()}
 </a>
 
 <style lang="postcss">

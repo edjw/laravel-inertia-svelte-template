@@ -2,8 +2,13 @@
     import { inertia, page } from "@inertiajs/svelte";
     import * as DropdownMenu from "@/Components/ui/dropdown-menu";
 
-    export let href: string;
-    export let method = "get";
+    interface Props {
+        href: string;
+        method?: string;
+        children?: import('svelte').Snippet;
+    }
+
+    let { href, method = "get", children }: Props = $props();
 </script>
 
 <DropdownMenu.Item asChild>
@@ -13,7 +18,7 @@
         class:active={$page.url === href}
         use:inertia={{ method }}
     >
-        <slot />
+        {@render children?.()}
     </a>
 </DropdownMenu.Item>
 

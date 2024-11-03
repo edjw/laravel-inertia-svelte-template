@@ -8,17 +8,29 @@
     } from "@/Components/ui/button";
     import Button from "@/Components/ui/button/button.svelte";
 
-    export let link = false;
-    export let method = "get";
-    export let variant: ButtonVariant = "default";
-    export let size: ButtonSize = "default";
-    export { className as class };
+    interface Props {
+        link?: boolean;
+        method?: string;
+        variant?: ButtonVariant;
+        size?: ButtonSize;
+        class?: string;
+        children?: import('svelte').Snippet;
+        [key: string]: any
+    }
 
-    let className = "";
+    let {
+        link = false,
+        method = "get",
+        variant = "default",
+        size = "default",
+        class: className = "",
+        children,
+        ...rest
+    }: Props = $props();
 </script>
 
 {#if link}
-    <!-- svelte-ignore a11y-missing-attribute -->
+    <!-- svelte-ignore a11y_missing_attribute -->
     <a
         use:inertia={{ method }}
         class={twMerge(
@@ -26,18 +38,18 @@
             "font-medium tracking-wide",
             className,
         )}
-        {...$$restProps}
+        {...rest}
     >
-        <slot />
+        {@render children?.()}
     </a>
 {:else}
     <Button
         class={twMerge("font-medium tracking-wide", className)}
         {variant}
         {size}
-        {...$$restProps}
+        {...rest}
         on:click
     >
-        <slot />
+        {@render children?.()}
     </Button>
 {/if}

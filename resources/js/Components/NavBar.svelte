@@ -4,7 +4,7 @@
     import UserDropdown from "@/Components/UserDropdown.svelte";
     import NavLink from "@/Components/NavLink.svelte";
 
-    $: user = $page.props.auth.user;
+    let user = $derived($page.props.auth.user);
 </script>
 
 <nav class="border-b">

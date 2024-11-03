@@ -5,7 +5,7 @@
     import { ChevronDown } from "lucide-svelte";
     import UserDropdownItem from "@/Components/UserDropdownItem.svelte";
 
-    $: user = $page.props.auth.user;
+    let user = $derived($page.props.auth.user);
 </script>
 
 <DropdownMenu.Root>

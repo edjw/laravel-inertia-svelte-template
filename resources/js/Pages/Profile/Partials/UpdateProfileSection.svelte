@@ -11,7 +11,8 @@
         email: $page.props.auth.user.email,
     });
 
-    function submit() {
+    function submit(event: SubmitEvent) {
+        event.preventDefault();
         $form.patch("/profile");
     }
 </script>
@@ -22,7 +23,7 @@
         <Card.Description>Update your name and email address.</Card.Description>
     </Card.Header>
     <Card.Content class="">
-        <form on:submit|preventDefault={submit}>
+        <form onsubmit={submit}>
             <FormSection>
                 <Label for="name">Name</Label>
                 <Input

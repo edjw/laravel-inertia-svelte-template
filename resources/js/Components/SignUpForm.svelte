@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import { useForm, inertia } from "@inertiajs/svelte";
     import Button from "@/Components/Button.svelte";
     import ErrorLabel from "@/Components/ErrorLabel.svelte";
@@ -14,7 +14,8 @@
         password_confirmation: null,
     });
 
-    function submit() {
+    function submit(event: SubmitEvent) {
+        event.preventDefault();
         $form.post("/register");
     }
 </script>
@@ -22,7 +23,7 @@
 <Card.Root class="shadow-lg w-96">
     <Card.Header></Card.Header>
     <Card.Content>
-        <form on:submit|preventDefault={submit} class="">
+        <form onsubmit={submit} class="">
             <FormSection>
                 <Label for="name">Name</Label>
                 <Input
